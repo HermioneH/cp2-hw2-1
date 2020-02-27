@@ -1,0 +1,231 @@
+import React, { Component } from "react";
+
+import "./styles.css";
+
+var pages = {
+  start: {
+    text: "Hey pet lover! Ready for a advanture? Choose your favorite.",
+    leftLabel: "Mammal",
+    middleLabel:"Amphibian",
+    rightLabel: "Bird",
+    leftPage: "chooseamammal",
+    middlePage:"chooseaamphibian",
+    rightPage: "chooseabird"
+  },
+
+  chooseamammal: {
+    text:
+      "Here are some options, which one you want to choose?",
+    leftLabel: "Just take a look, I don't have money",
+    middleLabel:"Buy the one you like",
+    rightLabel: "Choose a blind box",
+    leftPage: "Youareout",
+    middlePage:"pickamammal",
+    rightPage: "openmammalblindbox"
+  },
+
+  chooseaamphibian: {
+    text:
+      "Here are some options, which one you want to choose?",
+    leftLabel: "Just take a look, I don't have money",
+    middleLabel:"Buy the one you like",
+    rightLabel: "Choose a blind box",
+    leftPage: "Youareout",
+    middlePage:"pickaamphibian",
+    rightPage: "openamphibianblindbox"
+  },
+
+  chooseabird: {
+    text:
+      "Here are some options, which one you want to choose?",
+    leftLabel: "Just take a look, I don't have money",
+    middleLabel:"Buy the one you like",
+    rightLabel: "Choose a blind box",
+    leftPage: "Youareout",
+    middlePage:"pickabird",
+    rightPage: "openbirdblindbox"
+  },
+  
+  Youareout: {
+    text:
+      "Sorry, but if you buy nothing, you are out!",
+  },
+
+  pickamammal: {
+    text:
+      "Here are some of our pets, which one you want to buy?",
+    leftLabel: "Dog",
+    middleLabel:"Cat",
+    rightLabel: "hedgehogs",
+    leftPage: "haveadog",
+    middlePage:"haveacat",
+    rightPage: "nohedgehogs"
+  },
+
+  openmammalblindbox: {
+    text:
+      "Congras, You get a skinny pig!",
+      leftLabel: "Wow, I love it!",
+      middleLabel:"Emmmm...",
+      rightLabel: "Damn, it's so ugly",
+      leftPage: "bringhome",
+      middlePage:"dontlike",
+      rightPage: "tickout"
+  },
+
+  pickaamphibian: {
+    text:
+      "Here are some of our pets, which one you want to buy?",
+    leftLabel: "Chameleon",
+    middleLabel:"Snack",
+    rightLabel: "lizard",
+    leftPage: "choosechameleon",
+    middlePage:"choosesnake",
+    rightPage: "chooselizard"
+  },
+
+  openamphibianblindbox: {
+    text:
+      "Congras, You get a gecko!",
+      leftLabel: "Wow, I love it!",
+      middleLabel:"Emmmm...",
+      rightLabel: "Damn, it's so vired",
+      leftPage: "bringhome",
+      middlePage:"dontlike",
+      rightPage: "tickout"
+  },
+
+  pickabird: {
+    text:
+      "Here are some of our pets, which one you want to buy?",
+    leftLabel: "Macaw",
+    middleLabel:"Budgerigar",
+    rightLabel: "Quaker parakeets",
+    leftPage: "choosemacaw",
+    middlePage:"choosebudgerigar",
+    rightPage: "noquakerparakeets"
+  },
+
+  openbirdlindbox: {
+    text:
+      "Congras, You get a Psyduck!",
+      image:
+      "https://purepng.com/public/uploads/medium/purepng.com-pokemonpokemonpocket-monsterspokemon-franchisefictional-speciesone-pokemonmany-pokemonone-pikachu-1701527786781eozgn.png",
+      leftLabel: "Wow, I love it!",
+      middleLabel:"Emmmm...",
+      rightLabel: "Damn, it looks so stupid！",
+      leftPage: "bringhome",
+      middlePage:"dontlike",
+      rightPage: "tickout"
+  },
+
+  haveadog: {
+    text:
+      "Here is your dog, thank you for coming!",
+  },
+
+  haveacat: {
+  text:
+    "Here is your cat, thank you for coming!",
+  },
+
+  nohedgehogs: {
+    text:
+      "Seriously, hedgehogs are illegal to feed as pets!",
+    },
+
+    choosechameleon: {
+    text:
+      "Here is your chameleon, thank you for coming!",
+  },
+
+  choosesnake: {
+  text:
+    "Here is your snake, thank you for coming!",
+  },
+
+  chooselizard: {
+    text:
+      "Here is your snake, thank you for coming!",
+    },
+
+    choosemacaw: {
+      text:
+        "Here is your macaw, thank you for coming!",
+    },
+  
+    choosebudgerigar: {
+    text:
+      "Here is your budgerigar, thank you for coming!",
+    },
+  
+    noquakerparakeets: {
+    text:
+       "Seriously, quaker parakeets are illegal to feed as pets!",
+    },
+
+    bringhome: {
+    text:
+    "It's yours, thank you for coming!"
+    },
+
+    dontlike: {
+      text:
+      "Sorry, someone bought it while you are thinking!"
+      },
+    
+      tickout: {
+        text:
+        "Get out! You don't deserve it!"
+        },
+};
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      page: "start"
+    };
+  }
+
+  goToPage(pageName) {
+    this.setState({
+      page: pageName
+    });
+  }
+
+  render() {
+    var pageData = pages[this.state.page];
+
+    var imageElement = "";
+    if (pageData.image) {
+      imageElement = <img src={pageData.image} width="400" />;
+    }
+
+    return (
+      <div className="App">
+        <p>{pageData.text}</p>
+        <p>{imageElement}</p>
+
+        <button onClick={() => this.goToPage(pageData.leftPage)}>
+          {pageData.leftLabel}
+        </button>
+
+        <button onClick={() => this.goToPage(pageData.middlePage)}>
+          {pageData.middleLabel}
+        </button>
+
+        <button onClick={() => this.goToPage(pageData.rightPage)}>
+          {pageData.rightLabel}
+        </button>
+
+        
+
+
+      </div>
+    );
+  }
+}
+
+export default App;

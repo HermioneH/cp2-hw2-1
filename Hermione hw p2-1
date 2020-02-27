@@ -185,8 +185,8 @@ var pages = {
 
     bringhome: {
     text:
-    "It's yours, thank you for coming!"
-   image:"https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTPyWp1UfhAcULhs9MzJGsY5DZK4kuV2jVsFCnTWy572NkJcXKE",
+    "It's yours, thank you for coming!",
+   image: "https://www.ecnmy.org/wp-content/uploads/2019/05/pets-3715733_960_720.jpg",
     },
 
     dontlike: {
